@@ -3,14 +3,13 @@ const kElm = document.querySelector('#number-k');
 const btnElm = document.querySelector('#submitBtn');
 const outputElm = document.querySelector('#output');
 const totalElm = document.querySelector('#total');
-const checkIsValid = value => value === '' || value && Number(value) > 0;
+const checkIsValid = value => value === '' || value && Number(value) > 0 && Number(value) < 60;
 let total = 0;
 
 function find(n, k, list) {
   const lastValue = list.length ? list[list.length - 1] : 0;
   if (n === 0 && k === 0) {
     // answer found
-    console.log(list);
     addToOutput(list);
     return;
   }
@@ -27,12 +26,17 @@ function calculate() {
   btnElm.disabled = true;
   clearOutput();
   // init
-  const n = nElm.value || 5;
-  const k = kElm.value || 15;
+  const n = Number(nElm.value) || 5;
+  const k = Number(kElm.value) || 15;
   nElm.value = n;
   kElm.value = k;
+  // check
+  if (n > k || n > 60 || k > 60) {
+    return;
+  }
   // process
   find(n,k,[]);
+  btnElm.disabled = false;
 }
 
 function validate(e, name) {
@@ -56,10 +60,11 @@ function validate(e, name) {
 function clearOutput() {
   outputElm.innerHTML = '';
   total = 0;
+  totalElm.innerHTML = total;
 }
 
 function addToOutput(list) {
-  outputElm.innerHTML += `<li>${list}</li>`;
+  outputElm.innerHTML += `<li>${list.join(', ')}</li>`;
   ++total;
   totalElm.innerHTML = total;
 }
