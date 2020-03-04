@@ -3,8 +3,16 @@ const kElm = document.querySelector('#number-k');
 const btnElm = document.querySelector('#submitBtn');
 const outputElm = document.querySelector('#output');
 const totalElm = document.querySelector('#total');
-const checkIsValid = value => value === '' || value && Number(value) > 0 && Number(value) < 60;
+
+const maxValue = 100;
+const checkIsValid = value => value === '' || value && Number(value) > 0 && Number(value) <= maxValue;
+
+nElm.max = maxValue;
+kElm.max = maxValue;
+document.querySelector('#maxValue').innerHTML = maxValue;
+
 let total = 0;
+let content = '';
 
 function find(n, k, list) {
   const lastValue = list.length ? list[list.length - 1] : 0;
@@ -13,9 +21,22 @@ function find(n, k, list) {
     addToOutput(list);
     return;
   }
-  if (lastValue > k || n === 0) {
+  if (lastValue >= k || n === 0) {
     return;
   }
+
+  const minSum = ((lastValue + 1 + lastValue + n) * n) >> 1;
+  if (minSum > k) {
+    return;
+  }
+  if (minSum === k) {
+    for (let i = lastValue + 1, cnt = 0; cnt < n; ++cnt, ++i) {
+      list.push(i);
+    }
+    addToOutput(list);
+    return;
+  }
+
   for (let i = lastValue + 1; i <= k; ++i) {
     find(n - 1, k - i, [...list, i]);
   }
@@ -23,20 +44,19 @@ function find(n, k, list) {
 
 function calculate() {
   // reset
-  btnElm.disabled = true;
   clearOutput();
   // init
   const n = Number(nElm.value) || 5;
   const k = Number(kElm.value) || 15;
-  nElm.value = n;
-  kElm.value = k;
   // check
-  if (n > k || n > 60 || k > 60) {
+  if (n > k || n > maxValue || k > maxValue) {
     return;
   }
   // process
-  find(n,k,[]);
-  btnElm.disabled = false;
+  setTimeout(() => {
+    find(n,k,[]);
+    updateOutput();
+  });
 }
 
 function validate(e, name) {
@@ -58,14 +78,21 @@ function validate(e, name) {
 }
 
 function clearOutput() {
+  btnElm.disabled = true;
   outputElm.innerHTML = '';
+  totalElm.innerHTML = 0;
+  content = '';
   total = 0;
-  totalElm.innerHTML = total;
 }
 
 function addToOutput(list) {
-  outputElm.innerHTML += `<li>${list.join(', ')}</li>`;
+  content += `<li>${list.join(', ')}</li>`;
   ++total;
+}
+
+function updateOutput() {
+  btnElm.disabled = false;
   totalElm.innerHTML = total;
+  outputElm.innerHTML = content;
 }
 
