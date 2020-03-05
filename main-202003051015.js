@@ -39,7 +39,7 @@ function find(n, k, s, list) {
     return;
   }
 
-  for (let i = lastValue + 1; i <= k; ++i) {
+  for (let i = lastValue + 1; i <= k && i <= s; ++i) {
     find(n - 1, k - i, s, [...list, i]);
   }
 }
