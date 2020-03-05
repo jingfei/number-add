@@ -35,7 +35,7 @@ body {
 <body>
   <p><i>a<sub>1</sub></i> + <i>a<sub>2</sub></i> + <i>...</i> + <i>a<sub>n</i></sub> = <i>k</i></p>
   <p>where <i>n</i>, <i>a<sub>i</sub></i> and <i>k</i> belongs to positive number<br/>
-  <i>a<sub>1</sub></i> < <i>a<sub>2</sub></i> < <i>...</i> < <i>a<sub>n</sub></i> ≤ <i>k</i> ≤ <span id="maxValue"></span></p>
+  <i>a<sub>1</sub></i> < <i>a<sub>2</sub></i> < <i>...</i> < <i>a<sub>n</sub></i> ≤ <i>S</i> ≤ <i>k</i> ≤ <span id="maxValue"></span></p>
 
   <form class="form-inline" onsubmit="return false;">
     <label class="sr-only" for="number-n">n</label>
@@ -54,7 +54,7 @@ body {
       <input type="number" class="form-control" min="1" id="number-k" placeholder="15" onkeyup="validate(event, 'k')">
     </div>
     
-    <label class="sr-only" for="number-s">s</label>
+    <label class="sr-only" for="number-s">S</label>
     <div class="input-group mb-2 mr-sm-2">
       <div class="input-group-prepend">
         <div class="input-group-text"><i>s</i>&nbsp;=</div>
@@ -66,6 +66,6 @@ body {
   </form>
   <h5>Total: <span id="total">0</span> set(s)</h5>
   <ul id="output"></ul>
-  <script src="main-202003051002.js"></script>
+  <script src="main-202003051015.js"></script>
 </body>
 </html>
