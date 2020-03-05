@@ -53,11 +53,19 @@ body {
       </div>
       <input type="number" class="form-control" min="1" id="number-k" placeholder="15" onkeyup="validate(event, 'k')">
     </div>
-  
+    
+    <label class="sr-only" for="number-s">s</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i>s</i>&nbsp;=</div>
+      </div>
+      <input type="number" class="form-control" min="1" id="number-s" placeholder="15" onkeyup="validate(event, 's')">
+    </div>
+
     <button type="submit" class="btn btn-secondary mb-2 flex-grow-1" id="submitBtn" onClick="calculate()">Calculate</button>
   </form>
   <h5>Total: <span id="total">0</span> set(s)</h5>
   <ul id="output"></ul>
-  <script src="main-202003050052.js"></script>
+  <script src="main-202003051002.js"></script>
 </body>
 </html>
