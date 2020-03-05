@@ -65,7 +65,7 @@ function calculate() {
 function validate(e, name) {
   const nIsValid = checkIsValid(nElm.value);
   const kIsValid = checkIsValid(kElm.value);
-  const sIsValid = checkIsValid(sElm.valur);
+  const sIsValid = checkIsValid(sElm.value);
 
   let isValid = name === 'n' ? nIsValid : 's' ? sIsValid : kIsValid;
   if (isValid) {
