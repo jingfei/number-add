@@ -13,11 +13,14 @@ body {
   max-width: 780px;
 }
 .input-group {
-  width: 50%;
-  min-width: 160px;
+  width: 33%;
 }
 .input-group-text {
-  padding: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+#description {
+  line-height: 2em;
 }
 #output {
   font-family: Consolas;
@@ -33,9 +36,11 @@ body {
   </style>
 </head>
 <body>
-  <p><i>a<sub>1</sub></i> + <i>a<sub>2</sub></i> + <i>...</i> + <i>a<sub>n</i></sub> = <i>k</i></p>
-  <p>where <i>n</i>, <i>a<sub>i</sub></i> and <i>k</i> belongs to positive number<br/>
-  <i>a<sub>1</sub></i> < <i>a<sub>2</sub></i> < <i>...</i> < <i>a<sub>n</sub></i> ≤ <i>S</i> ≤ <i>k</i> ≤ <span id="maxValue"></span></p>
+  <p id="description">
+    <i>a<sub>1</sub></i> + <i>a<sub>2</sub></i> + <i>...</i> + <i>a<sub>n</i></sub> = <i>k</i><br/>
+    <i>a<sub>1</sub></i> < <i>a<sub>2</sub></i> < <i>...</i> < <i>a<sub>n</sub></i> ≤ <i>S</i> ≤ <i>k</i> ≤ <span id="maxValue"></span><br/>
+    where <i>n</i>, <i>a<sub>i</sub></i>, <i>S</i> and <i>k</i> belongs to positive integer
+  </p>
 
   <form class="form-inline" onsubmit="return false;">
     <label class="sr-only" for="number-n">n</label>
@@ -57,7 +62,7 @@ body {
     <label class="sr-only" for="number-s">S</label>
     <div class="input-group mb-2 mr-sm-2">
       <div class="input-group-prepend">
-        <div class="input-group-text"><i>s</i>&nbsp;=</div>
+        <div class="input-group-text"><i>S</i>&nbsp;=</div>
       </div>
       <input type="number" class="form-control" min="1" id="number-s" placeholder="15" onkeyup="validate(event, 's')">
     </div>
