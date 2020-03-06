@@ -55,7 +55,7 @@ function calculate() {
   const n = Number(nElm.value) || 5;
   const k = Number(kElm.value) || 15;
   const s = Number(sElm.value) || 15;
-  const t = Number(tElm.value) || 15;
+  const t = Number(tElm.value) || 0;
   // check
   if (n > k || n > maxValue || k > maxValue || s > maxValue || t > maxValue) {
     return;
@@ -71,7 +71,7 @@ function validate(e, name) {
   const nIsValid = checkIsValid(nElm.value);
   const kIsValid = checkIsValid(kElm.value);
   const sIsValid = checkIsValid(sElm.value);
-  const tIsValid = checkIsValid(tElm.value);
+  const tIsValid = checkIsValid(tElm.value) || tElm.value === '0' || tElm.value === 0;
 
   let isValid = name === 'n' ? nIsValid : name === 's' ? sIsValid : name === 't' ? tIsValid : kIsValid;
   if (isValid) {
