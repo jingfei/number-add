@@ -13,7 +13,7 @@ body {
   max-width: 780px;
 }
 .input-group {
-  width: 33%;
+  width: 50%;
 }
 .input-group-text {
   padding-right: 5px;
@@ -39,6 +39,7 @@ body {
   <p id="description">
     <i>a<sub>1</sub></i> + <i>a<sub>2</sub></i> + <i>...</i> + <i>a<sub>n</i></sub> = <i>k</i><br/>
     <i>a<sub>1</sub></i> < <i>a<sub>2</sub></i> < <i>...</i> < <i>a<sub>n</sub></i> ≤ <i>S</i> ≤ <i>k</i> ≤ <span id="maxValue"></span><br/>
+    <i>T</i> ∉ <i>a<sub>i</sub></i><br/>
     where <i>n</i>, <i>a<sub>i</sub></i>, <i>S</i> and <i>k</i> belongs to positive integer
   </p>
 
@@ -67,10 +68,18 @@ body {
       <input type="number" class="form-control" min="1" id="number-s" placeholder="15" onkeyup="validate(event, 's')">
     </div>
 
+    <label class="sr-only" for="number-t">T</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i>T</i>&nbsp;=</div>
+      </div>
+      <input type="number" class="form-control" min="0" id="number-t" placeholder="0" onkeyup="validate(event, 't')">
+    </div>
+
     <button type="submit" class="btn btn-secondary mb-2 flex-grow-1" id="submitBtn" onClick="calculate()">Calculate</button>
   </form>
   <h5>Total: <span id="total">0</span> set(s)</h5>
   <ul id="output"></ul>
-  <script src="main-202003051015.js"></script>
+  <script src="main-202003061912.js"></script>
 </body>
 </html>
